@@ -7,8 +7,8 @@
 import tkinter as tk
 from tkinter import ttk
 import ctypes
-import numpy as np
-import pandas as pd
+# import numpy as np
+# import pandas as pd
 import pickle
 import os
 
@@ -259,9 +259,6 @@ class Application(tk.Frame):
         print("clear")
         for i in range(len(self.Question)):
             self.scale_var[i].set(50)
-
-    def load(self):
-        data = np.load("Answer.npz", mmap_mode='c')
 
 
 if __name__ == "__main__":
