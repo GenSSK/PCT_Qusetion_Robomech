@@ -20,14 +20,20 @@ class Application(tk.Frame):
 
         # 初期設定
         self.master.title("アンケート")  # ウィンドウタイトル
-        self.master.geometry("1020x1000")
+        self.master.geometry("1020x1300")
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         self.Question = [
-            "Q1. これはどうでしたか？",
-            "Q2. それはどうでしたか？",
-            "Q3. あれはどうでしたか？",
-            "Q4. それでどうでしたか？",
+            "Q1. 自分で操作をしている感覚はありましたか？",
+            "Q2. 操作はしやすかったですか？",
+            "Q3. 一人で操作をしているように感じましたか？",
+            "Q4. 作業相手の操作を感じることができましたか？",
+            "Q5. 操作に集中することができましたか？",
+            "Q6. 作業相手の操作は力強かったですか？",
+            "Q7. 自分が作業をリードしている感覚はありましたか？",
+            "Q8. 相手に作業をリードしてもらっている感覚はありましたか？",
+            "Q9. 作業がうまく行えましたか？",
+            "Q10. 強調して作業をしていると思いましたか？",
         ]
 
         self.data = ['0'] * (1 + 4 + len(self.Question))
@@ -83,7 +89,8 @@ class Application(tk.Frame):
                      "y.noguchi",
                      "t.bitoh",
                      "h.mori",
-                     "y.yamada"]
+                     "y.yamada",
+                     "r.yanase"]
 
         # アンサー
         self.subject = []
@@ -161,12 +168,12 @@ class Application(tk.Frame):
                               )
             scaleH.grid(row=i * 2)
 
-            text = tk.Label(frame3, text="よくない                         "
+            text = tk.Label(frame3, text="とてもそう思わない"
                                          "                                                             "
                                          ""
                                          ""
                                          "                                                         "
-                                         "                                  よい")
+                                         "                                  とてもそう思う")
             text.grid(row=i * 2 + 1)
 
         frame4 = ttk.Frame(self.master, padding=10)

@@ -6,7 +6,7 @@
       <excludeFolder url="file://$MODULE_DIR$/mbpvenv" />
       <excludeFolder url="file://$MODULE_DIR$/mbpvenv398" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.9 (PCT_Qusetion_Robomech) (2)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.8" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
