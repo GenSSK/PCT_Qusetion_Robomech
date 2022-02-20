@@ -157,7 +157,7 @@ class Application(tk.Frame):
                               activebackground='skyblue',
                               label=self.Question[i],
                               orient=tk.HORIZONTAL,  # 配置の向き、水平(HORIZONTAL)、垂直(VERTICAL)
-                              length=1000,  # 全体の長さ
+                              length=800,  # 全体の長さ
                               width=20,  # 全体の太さ
                               sliderlength=20,  # スライダー（つまみ）の幅
                               from_=0,  # 最小値（開始の値）
@@ -269,10 +269,10 @@ class Application(tk.Frame):
 
 
 if __name__ == "__main__":
-    try:
-        ctypes.windll.shcore.SetProcessDpiAwareness(True)
-    except:
-        pass
+    # try:
+    #     ctypes.windll.shcore.SetProcessDpiAwareness(True)
+    # except:
+    #     pass
 
     root = tk.Tk()
     app = Application(master=root)
