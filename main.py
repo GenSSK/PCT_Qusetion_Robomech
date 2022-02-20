@@ -20,7 +20,7 @@ class Application(tk.Frame):
 
         # 初期設定
         self.master.title("アンケート")  # ウィンドウタイトル
-        self.master.geometry("1020x1300")
+        self.master.geometry("1020x800")
         self.master.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         self.Question = [
@@ -33,7 +33,7 @@ class Application(tk.Frame):
             "Q7. 自分が作業をリードしている感覚はありましたか？",
             "Q8. 相手に作業をリードしてもらっている感覚はありましたか？",
             "Q9. 作業がうまく行えましたか？",
-            "Q10. 強調して作業をしていると思いましたか？",
+            "Q10. 協調して作業をしていると思いましたか？",
         ]
 
         self.data = ['0'] * (1 + 4 + len(self.Question))
@@ -49,8 +49,8 @@ class Application(tk.Frame):
 
         self.scale_var = []  # スケールの値格納
 
-        frame1 = ttk.Frame(self.master, padding=10)
-        frame1.grid()
+        frame1 = ttk.Frame(self.master, padding=0)
+        frame1.pack()
 
         name_order = ["自分の名前", "被験者1", "被験者2", "被験者3"]
         name_list = ["g.sasaki",
@@ -103,6 +103,7 @@ class Application(tk.Frame):
                 frame1,
                 values=name_list,
                 textvariable=self.subject[i],
+                width=18
             )
             # cb.bind('<<ComboboxSelected>>', select_cb)
             cb.set("")
@@ -113,8 +114,8 @@ class Application(tk.Frame):
 
 
 
-        frame2 = ttk.Frame(self.master, padding=10)
-        frame2.grid()
+        frame2 = ttk.Frame(self.master, padding=0)
+        frame2.pack()
 
         # radioウィジェット
         radio_text = tk.Label(frame2, text="実験の選択")
@@ -139,8 +140,8 @@ class Application(tk.Frame):
 
 
 
-        frame3 = ttk.Frame(self.master, padding=10)
-        frame3.grid()
+        frame3 = ttk.Frame(self.master, padding=0)
+        frame3.pack()
 
         for i in range(len(self.Question)):
             # #文字
@@ -158,7 +159,7 @@ class Application(tk.Frame):
                               label=self.Question[i],
                               orient=tk.HORIZONTAL,  # 配置の向き、水平(HORIZONTAL)、垂直(VERTICAL)
                               length=800,  # 全体の長さ
-                              width=20,  # 全体の太さ
+                              width=15,  # 全体の太さ
                               sliderlength=20,  # スライダー（つまみ）の幅
                               from_=0,  # 最小値（開始の値）
                               to=100,  # 最大値（終了の値）
@@ -166,18 +167,18 @@ class Application(tk.Frame):
                               showvalue=False,
                               # tickinterval = 50         # 目盛りの分解能(初期値0で表示なし)
                               )
-            scaleH.grid(row=i * 2)
+            scaleH.grid(row=i * 2, sticky='news')
 
-            text = tk.Label(frame3, text="とてもそう思わない"
-                                         "                                                             "
+            text = tk.Label(frame3, text="全くそう思わない"
+                                         "                                                        "
                                          ""
-                                         ""
+                                         "                          "
                                          "                                                         "
-                                         "                                  とてもそう思う")
+                                         "                                  非常にそう思う")
             text.grid(row=i * 2 + 1)
 
         frame4 = ttk.Frame(self.master, padding=10)
-        frame4.grid()
+        frame4.pack()
 
         save = tk.Button(
             frame4,
@@ -193,8 +194,8 @@ class Application(tk.Frame):
         )
         clear.grid(row=0, column=1)
 
-        frame5 = ttk.Frame(self.master, padding=30)
-        frame5.grid()
+        frame5 = ttk.Frame(self.master, padding=0)
+        frame5.pack()
 
         self.message = tk.StringVar()
         message_txt = tk.Label(frame5,
@@ -204,7 +205,7 @@ class Application(tk.Frame):
     def slider_scroll(self, event=None):
         '''スライダーを移動したとき'''
         # print(str(self.scale_var[1].get()))
-        self.message.set("")
+        self.message.set("入力が終了したら回答ボタンを押してください")
 
     def on_closing(self):
         print("Closing!!!")
